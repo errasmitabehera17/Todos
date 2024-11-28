@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script type="text/javascript">
+        function LoadProduct(id){
+            fetch(`https://fakestoreapi.com/products/${id}`)
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(product){
+                document.getElementById("lblTitle").innerHTML=product.title;
+                document.getElementById("imgProduct").src=product.image;
+                document.getElementById("lblPrice").innerHTML=product.price.toLocalSring('en-us',{style:'currency', currecy:'USD'});
+            })
+        }
+        var ProductId=1;
+        function LoadProductAuto(){
+            ProductId=ProductId + 1;
+            fetch(`https://fakestoreapi.com/products/${ProductId}`)
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(product){
+                document.getElementById("lblTitle").innerHTML = product.title;
+                document.getElementById("imgProduct").src = product.image;
+                document.getElementById("lblPrice").innerHTML = product.price.toLocaleString('en-us',{ style:'currency', currency:'USD'});
+            })
+            document.getElementById("optSlider").value = ProductId;
+        }
+        function NextClick(){
+            ProductId = ProductId + 1;
+            LocalProduct(ProductId);
+        }
+        function PrevClick(){
+            ProductId = ProductId - 1;
+            LocalProduct(ProductId);
+        }
+        var interval;
+        function PlayClick(){
+            interval = setInterval(LoadProductAuto,5000);
+            document.getElementById("lblStatus").innerHTML = "Slide Show Started";
+        }
+        function SliderChange(){
+            LoadProduct(document.getElementById("optSlider").value);
+        }
+    </script>
+</head>
+<body onload=LoadProduct(1) class="container-fluid d-flex justify-content-center">
+    <div class="card mt-3 p-2 w-50">
+        <div class="card-header text-center">
+            <div id="lblTitle"></div>
+            <div id="lblStatus" class="fw-bold"></div>
+        </div>
+        <div class="card-body position-relative">
+            <div id="lblPrice"></div>
+            <div class="row">
+                <div class="col-1 d-flex flex-column justify-content-center">
+                    <button onclick="PrevClick()" class="bi btn bi-chevron-left"></button>
+                </div>
+                <div class="col-10">
+                    <img height="400" width="100%" id="imgProduct">
+            </div>
+            <div class="col-1 d-flex flex-column justify-content-center">
+                <button onclick="NextClick()" class="bi btn bi-chevron-right"></button>
+            </div>     
+         </div>
+         <div class="row"></div>
+         <div class="col text-center">
+            <input id="optSlider" onchange="SliderChange()" type="range" class="form-range" min="1" max="20" value="1">      
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <button onclick="PlayClick()" class="btn btn-success bi bi-play"></button>
+        <button onclick="PauseClick()" class="btn btn-warning bi bi-pause"></button>
+    </div>
+  </div>
+</body>
+</html>

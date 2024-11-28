@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Input</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script type="text/javascript">
+        function RegisterClicked(){
+
+            document.getElementById("btnRegisterProduct").style.display = "none";
+            document.getElementById("detailsContainer").style.display = "block";
+
+            document.getElementById("lblName").innerHTML = document.getElementById("txtName").value;
+            document.getElementById("lblPrice").innerHTML = document.getElementById("txtPrice").value;
+            document.getElementById("lblCity").innerHTML = document.getElementById("lstCities").value;
+
+            StockCheckBox = document.getElementById("optStock");
+            StockStatus = "";
+
+            if(StockCheckBox.checked)
+            {
+                StockStatus = "Available";
+            } else {
+                StockStatus = "Out of Stock";
+            }
+
+            document.getElementById("lblStock").innerHTML = StockStatus;
+
+        }
+        function EditClick(){
+            document.getElementById("title").innerHTML = "Edit Product";
+            document.getElementById("btnRegister").innerHTML = "Save";
+            document.getElementById("btnRegister").className = "btn btn-success";
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <button id="btnRegisterProduct" data-bs-target="#register" data-bs-toggle="modal" class="btn btn-primary mt-2">Register Product</button>
+    <div class="modal fade" id="register">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="title">Register Product</h3>
+                    <button class="btn btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <dl>
+                        <dt>Name</dt>
+                        <dd><input type="text" id="txtName" class="form-control"></dd>
+                        <dt>Price</dt>
+                        <dd><input type="number" id="txtPrice" class="form-control"></dd>
+                        <dt>Shipping To</dt>
+                        <dd>
+                            <select id="lstCities" class="form-select">
+                                <option>Select City</option>
+                                <option>Delhi</option>
+                                <option>Hyderabad</option>
+                            </select>
+                        </dd>
+                        <dt>Stock</dt>
+                        <dd class="form-switch">
+                            <input class="form-check-input" type="checkbox" id="optStock"> <label> Available </label>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnRegister" data-bs-dismiss="modal" onclick="RegisterClicked()" class="btn btn-primary">Register</button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="detailsContainer" style="display: none;">
+        <h3>Product Details</h3>
+        <dl>
+            <dt>Name</dt>
+            <dd id="lblName"></dd>
+            <dt>Price</dt>
+            <dd id="lblPrice"></dd>
+            <dt>City</dt>
+            <dd id="lblCity"></dd>
+            <dt>Stock</dt>
+            <dd id="lblStock"></dd>
+        </dl>
+        <button onclick="EditClick()" data-bs-target="#register" data-bs-toggle="modal" class="btn btn-warning bi bi-pen-fill"> Edit</button>
+    </div>
+</body>
+</html>
