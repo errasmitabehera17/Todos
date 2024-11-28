@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+<body class="container-fluid">
+    <h2>Product Detalis</h2>
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a href="#basic" data-bs-toggole="tab" class="nav-link active">Basic</a></li>
+        <li class="nav-item"><a  href="#praview" data-bs-toggole="tab"class="nav-link">Praview</a></li>
+        <li class="nav-item"><a  href="#featues" data-bs-toggole="tab"class="nav-link">Features</a></li>
+        <li class="nav-item"><a  href="#ratings" data-bs-toggole="tab" class="nav-link">Ratings</a></li>
+    </ul>
+    <div class="mt-4 tab-content">
+        <div class="tab-pane" id="basic">
+            <div class="h4">Apple Iphone Black 128 GB</div>
+            <div class="h2 my-2"> &#8377; 79999/-</div>
+        </div>
+        <div class="tab-pane active" id="praview">
+            <img src="../public/images/Iphone Black.jpg" width="200" height="300"
+        </div>
+        <div class="tab-pane" id="features">
+            <ul>
+                <li>128 GB ROM</li>
+                <li>15.49 cm (6.1 inch) super Retina XDR Display</li>
+                <li>48MP + 12MP | 12MP Front Camera</li>
+                <li>A16 Bionic Chio, 6 Core Processer</li>
+                <li>1 Your Warranty for phone and 6 month warranty for In-Box Accessoric</li>
+            </ul>
+        </div>
+        <div class="tab-pane" id="ratings">
+            <span class="badge bg-success rounded text-white">4.6 <span class="bi bi-star-fill"></span></span>
+        </div>
+    </div>
+</body>
+</html>

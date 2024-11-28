@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</head>
+<body class="container-fluid">
+   <header class="d-flex justify-content-between p-4 fs-2">
+      <div>
+        <button data-bs-target="#sidebar" data-bs-toggle="offcanvas" class="bi bi-justify btn btn-light fs-2"></button>
+       
+      </div>
+      <div>
+        <span class="mx-2"> Home </span>
+        <span class="mx-2"> About </span>
+        <span class="mx-2"> Contact </span>
+      </div>
+      <div>
+        <span class="mx-2 bi bi-person"></span>
+        <span class="mx-2 bi bi-heart"></span>
+        <span class="mx-2 bi bi-bell"></span>
+      </div>
+   </header>
+   <div class="offcanvas offcanvas-start" id="sidebar">
+    <div class="offcanvas-header bg-dark text-white">
+        <h2>Amazon Shopping</h2>
+        <button class="btn btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="list-unstyled">
+            <li class="my-3"> Home </li>
+            <li class="my-3"> Electronics </li>
+            <li class="my-3"> Footwear </li>
+            <li class="my-3"> Fashion </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
